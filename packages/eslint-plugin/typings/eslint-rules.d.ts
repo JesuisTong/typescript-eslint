@@ -960,3 +960,87 @@ declare module 'eslint/lib/rules/no-restricted-imports' {
   >;
   export = rule;
 }
+
+declare module 'eslint/lib/rules/lines-around-comment' {
+  import { TSESLint, TSESTree } from '@typescript-eslint/utils';
+  import { RuleFunction } from '@typescript-eslint/utils/dist/ts-eslint';
+
+  type Options = [
+    {
+      beforeBlockComment?: boolean;
+      afterBlockComment?: boolean;
+      beforeLineComment?: boolean;
+      afterLineComment?: boolean;
+      allowBlockStart?: boolean;
+      allowBlockEnd?: boolean;
+      allowClassStart?: boolean;
+      allowClassEnd?: boolean;
+      allowObjectStart?: boolean;
+      allowObjectEnd?: boolean;
+      allowArrayStart?: boolean;
+      allowArrayEnd?: boolean;
+      ignorePattern?: string;
+      applyDefaultIgnorePatterns?: boolean;
+    },
+  ];
+
+  type MessageIds = 'before' | 'after';
+
+  const rule: TSESLint.RuleModule<
+    MessageIds,
+    Options,
+    {
+      // Program
+      Program: RuleFunction<TSESTree.Program>;
+
+      // Statements
+      DebuggerStatement: RuleFunction<TSESTree.DebuggerStatement>;
+      WithStatement: RuleFunction<TSESTree.WithStatement>;
+
+      // Statements - Control flow
+      BreakStatement: RuleFunction<TSESTree.BreakStatement>;
+      ContinueStatement: RuleFunction<TSESTree.ContinueStatement>;
+      ReturnStatement: RuleFunction<TSESTree.ReturnStatement>;
+      ThrowStatement: RuleFunction<TSESTree.ThrowStatement>;
+      TryStatement: RuleFunction<TSESTree.TryStatement>;
+
+      // Statements - Choice
+      IfStatement: RuleFunction<TSESTree.IfStatement>;
+      SwitchStatement: RuleFunction<TSESTree.Node>;
+      SwitchCase: RuleFunction<TSESTree.Node>;
+
+      // Statements - Loops
+      DoWhileStatement: RuleFunction<TSESTree.DoWhileStatement>;
+      ForInStatement: RuleFunction<TSESTree.ForInStatement>;
+      ForOfStatement: RuleFunction<TSESTree.ForOfStatement>;
+      ForStatement: RuleFunction<TSESTree.ForStatement>;
+      WhileStatement: RuleFunction<TSESTree.WhileStatement>;
+
+      // Statements - Declarations
+      ClassDeclaration: RuleFunction<TSESTree.ClassDeclaration>;
+      ExportNamedDeclaration: RuleFunction<TSESTree.ExportNamedDeclaration>;
+      ExportDefaultDeclaration: RuleFunction<TSESTree.ExportDefaultDeclaration>;
+      ExportAllDeclaration: RuleFunction<TSESTree.ExportAllDeclaration>;
+      FunctionDeclaration: RuleFunction<TSESTree.FunctionDeclaration>;
+      ImportDeclaration: RuleFunction<TSESTree.ImportDeclaration>;
+      VariableDeclaration: RuleFunction<TSESTree.VariableDeclaration>;
+
+      // Expressions
+      ArrowFunctionExpression: RuleFunction<TSESTree.ArrowFunctionExpression>;
+      AwaitExpression: RuleFunction<TSESTree.AwaitExpression>;
+      ClassExpression: RuleFunction<TSESTree.ClassExpression>;
+      FunctionExpression: RuleFunction<TSESTree.FunctionExpression>;
+      NewExpression: RuleFunction<TSESTree.NewExpression>;
+      Super: RuleFunction<TSESTree.Super>;
+      ThisExpression: RuleFunction<TSESTree.ThisExpression>;
+      UnaryExpression: RuleFunction<TSESTree.UnaryExpression>;
+      YieldExpression: RuleFunction<TSESTree.YieldExpression>;
+
+      // Others
+      ImportNamespaceSpecifier: RuleFunction<TSESTree.ImportNamespaceSpecifier>;
+      MethodDefinition: RuleFunction<TSESTree.MethodDefinition>;
+      Property: RuleFunction<TSESTree.Property>;
+    }
+  >;
+  export = rule;
+}

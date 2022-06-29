@@ -36,6 +36,7 @@ interface RuleMap {
   'space-before-blocks': typeof import('eslint/lib/rules/space-before-blocks');
   'space-infix-ops': typeof import('eslint/lib/rules/space-infix-ops');
   strict: typeof import('eslint/lib/rules/strict');
+  'lines-around-comment': typeof import('eslint/lib/rules/lines-around-comment');
 }
 
 type RuleId = keyof RuleMap;

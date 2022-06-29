@@ -209,7 +209,7 @@ export default util.createRule<Options, MessageIds>({
      * @param {token} token The Comment token.
      * @returns {boolean} True if the comment is at block start.
      */
-    function isCommentAtBlockStart(token) {
+    function isCommentAtBlockStart(token: TSESTree.Comment): boolean {
       return (
         isCommentAtParentStart(token, 'ClassBody') ||
         isCommentAtParentStart(token, 'BlockStatement') ||
@@ -234,12 +234,10 @@ export default util.createRule<Options, MessageIds>({
     }
 
     /**
-     * Returns whether or not comments are at the class start or not.
-     * @param {token} token The Comment token.
-     * @returns {boolean} True if the comment is at class start.
+     * Returns whether or not comments are at the interface start or not.
      */
-    function isCommentAtClassStart(token) {
-      return isCommentAtParentStart(token, 'ClassBody');
+    function isCommentAtInterfaceStart(token: TSESTree.Comment): boolean {
+      return isCommentAtParentStart(token, AST_TOKEN_TYPES.interface);
     }
 
     /**
@@ -256,7 +254,7 @@ export default util.createRule<Options, MessageIds>({
      * @param {token} token The Comment token.
      * @returns {boolean} True if the comment is at object start.
      */
-    function isCommentAtObjectStart(token) {
+    function isCommentAtObjectStart(token: TSESTree.Comment): boolean {
       return (
         isCommentAtParentStart(token, 'ObjectExpression') ||
         isCommentAtParentStart(token, 'ObjectPattern')
@@ -459,3 +457,4 @@ export default util.createRule<Options, MessageIds>({
     };
   },
 });
+// https://download.cypress.io/desktop/8.3.0?platform=win32&arch=x64
